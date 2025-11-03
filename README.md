@@ -1,13 +1,12 @@
-ViToSA-Pipeline
-==========================
+# ViToSA-Pipeline
 
-Vietnamese Speech-to-Toxicity Analysis (ViToSA) Pipeline
+Vietnamese Speech-to-Toxicity Analysis (ViToSA) Pipeline  
 Combining PhoWhisper ASR and PhoBERT TSD for Vietnamese audio moderation.
 
 ---
 
-Overview
---------
+## Overview
+
 **ViToSA-Pipeline** provides an end-to-end Python interface for:
 - Transcribing Vietnamese audio into text using ViToSA PhoWhisper ASR.
 - Detecting and masking toxic words with ViToSA PhoBERT TSD.
@@ -17,8 +16,8 @@ It is built on top of the **ViToSA 1.0 dataset**, the first Vietnamese dataset f
 
 ---
 
-About the ViToSA Dataset
-------------------------
+## About the ViToSA Dataset
+
 **Title:** ViToSA: Audio-Based Toxic Spans Detection on Vietnamese Speech Utterances  
 **Version:** 1.0 (August 2025)  
 **Authors:** Huy Ba Do, Vy Le-Phuong Huynh, and Luan Thanh Nguyen  
@@ -27,6 +26,7 @@ About the ViToSA Dataset
 
 If you use this dataset or models derived from it, please cite:
 
+```bibtex
 @inproceedings{do25b_interspeech,
   title     = {{ViToSA: Audio-Based Toxic Spans Detection on Vietnamese Speech Utterances}},
   author    = {Huy Ba Do and Vy Le-Phuong Huynh and Luan Thanh Nguyen},
@@ -36,34 +36,36 @@ If you use this dataset or models derived from it, please cite:
   doi       = {10.21437/Interspeech.2025-1958},
   issn      = {2958-1796}
 }
+```
 
-Abstract
---------
+### Abstract
+
 Toxic speech in online platforms is a growing concern for user safety. While textual toxicity detection is well-studied, audio-based toxicity detection—especially for low-resource languages like Vietnamese—remains underexplored.
+
 The ViToSA dataset introduces ~11,000 speech samples (≈25 hours) with human-annotated toxic spans, enabling ASR + Toxic Speech Detection (TSD) pipelines for Vietnamese. Experiments show that fine-tuning ASR models on ViToSA improves WER, and that text-based toxic span detection (TSD) models outperform baseline toxicity classifiers.
 
-Dataset Summary
-----------------
-| Split       | # Examples | Notes |
-|--------------|-------------|--------------------------------------|
-| Train        | 8,641       | toxic only |
-| Validation   | 2,161       | toxic only |
-| Test         | 2,000       | balanced 50/50 toxic / non-toxic |
+### Dataset Summary
+
+| Split | # Examples | Notes |
+|-------|------------|-------|
+| Train | 8,641 | toxic only |
+| Validation | 2,161 | toxic only |
+| Test | 2,000 | balanced 50/50 toxic / non-toxic |
 
 Each entry includes:
-- file_name: audio file name
-- audio: waveform (float32)
-- transcript: human transcription
-- toxicity: binary annotation
+- `file_name`: audio file name
+- `audio`: waveform (float32)
+- `transcript`: human transcription
+- `toxicity`: binary annotation
 
-Modalities: Audio + Text  
-Language: Vietnamese  
-License: CC-BY-NC-ND 4.0 (non-commercial, no derivatives)
+**Modalities:** Audio + Text  
+**Language:** Vietnamese  
+**License:** CC-BY-NC-ND 4.0 (non-commercial, no derivatives)
 
 ---
 
-ViToSA Pipeline Features
-------------------------
+## ViToSA Pipeline Features
+
 ✅ Automatic GPU / CPU selection  
 ✅ Robust Hugging Face model handling  
 ✅ Toxic word masking with "***"  
@@ -71,31 +73,44 @@ ViToSA Pipeline Features
 
 ---
 
-Installation
-------------
-pip install vitosa-pipeline
+## Installation
 
-Usage
------
+```bash
+pip install vitosa-pipeline
+```
+
+---
+
+## Usage
+
+```python
 from vitosa_pipeline import ViToSA
 
 vitosa = ViToSA()
 print(vitosa.pipeline("example.wav"))
+```
 
 Batch processing:
+
+```python
 vitosa.process_folder("/path/to/folder")
+```
 
 ---
 
-Terms of Use
-------------
+## Terms of Use
+
 - Research and educational use only (non-commercial).  
 - Redistribution of raw data is prohibited.  
 - Cite the ViToSA paper if used in research.  
 - The dataset and models may contain explicit language. Use responsibly.  
 
-Contact
--------
+---
+
+## Contact
+
 For more information: luannt@uit.edu.vn  
 
-MIT License © 2025 Your Name
+---
+
+MIT License © 2025 Luan Thanh Nguyen
