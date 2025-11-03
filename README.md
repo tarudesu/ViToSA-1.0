@@ -90,12 +90,6 @@ vitosa = ViToSA()
 print(vitosa.pipeline("example.wav"))
 ```
 
-Batch processing:
-
-```python
-vitosa.process_folder("/path/to/folder")
-```
-
 ---
 
 ## Terms of Use
